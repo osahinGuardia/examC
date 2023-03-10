@@ -28,6 +28,14 @@
 
 
 
+void copyArray(int tab[8][8], int tabTemp[8][8]){
+    
+    for(int i = 0;i < 8; i++){
+        for(int j = 0;j < 8; j++){
+            tabTemp[j][i] = tab[j][i];
+        }
+    }
+}
 
 
 
