@@ -24,6 +24,17 @@
 
 
 
+int verifierGrille(int tab[8][8]){
+    int isCorrect = 1;
+    for(int i = 0; i < 8; i++){
+        int verifCol = verifLigneColonne(tab, 0);
+        int verifLign = verifLigneColonne(tab, 1);
+        if (verifCol || verifLign){
+            printf("Il semble que vous ne respectez pas les règles (ᅌᴗᅌ* )");
+            isCorrect = 0;
+        }
+    }
+}
 
 
 
