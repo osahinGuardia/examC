@@ -24,7 +24,7 @@
 
 
 
-int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
+int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
     int result = 0;
     int counter = 10;
     int past = 2;
@@ -100,11 +100,11 @@ int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
 
 
 
-int verifierGrille(int tab[8][8]){
+int verifGrille(int tab[8][8]){
     int isCorrect = 1;
     for(int i = 0; i < 8; i++){
-        int verifCol = verifLigneColonne(tab, 0);
-        int verifLign = verifLigneColonne(tab, 1);
+        int verifCol = verifLigneColonne(tab, i, 0);
+        int verifLign = verifLigneColonne(tab, i, 1);
         if (verifCol || verifLign){
             printf("Il semble que vous ne respectez pas les règles (ᅌᴗᅌ* )");
             isCorrect = 0;
@@ -164,7 +164,7 @@ int saisir(int tab[8][8]){
             scanf("%d", &saisie);
             int saisieVal = saisie;
             tabTemp[saisieI][saisieJ] = saisieVal;
-            result = verifierGrille(tabTemp);
+            result = verifGrille(tabTemp);
             if(result){
                 tab[saisieI][saisieJ] = saisieVal;
             }
