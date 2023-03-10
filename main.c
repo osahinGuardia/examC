@@ -73,7 +73,7 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
     if(LignOrCol == 1){ // ligne
         counter -= 10; 
         for(int i=0; i<8; i++){
-            printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
+            // printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
             
             if (tab[index][i] != past || tab[index][i] != pastPast){ // test doublon
                 
@@ -95,9 +95,9 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
         }
         if (counter != 0){ // renvoie mauvaise equilibre
             if (counter < 0){
-                printf("une ligne contient trop de 0.");
+                // printf("une ligne contient trop de 0.");
             }else if (counter > 0){
-                printf("une ligne contient trop de 1.");
+                // printf("une ligne contient trop de 1.");
             }
             return result;
         }
@@ -106,7 +106,7 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
     }else if (LignOrCol == 0){ // colonne
         counter -= 10; 
         for(int i=0; i<8; i++){
-            printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
+            // printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
             
 
             if (tab[i][index] != past || tab[i][index] != pastPast){ // test doublon
@@ -128,9 +128,9 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
         }
         if (counter != 0){ // renvoie mauvaise equilibre
             if (counter < 0){
-                printf("une colonne contient trop de 0.\n");
+                // printf("une colonne contient trop de 0.\n");
             }else if (counter > 0){
-                printf("une colonne contient trop de 1.\n");
+                // printf("une colonne contient trop de 1.\n");
             }
             return result;
         }
@@ -141,9 +141,6 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
 }
 
 // return 2 pour doublon / return 1 pour Juste / return 0 si non-equilibre
-
-
-
 
 
 int verifGrille(int tab[8][8]){
@@ -162,11 +159,9 @@ int verifGrille(int tab[8][8]){
             isCorrect = 0;
         }
     }
-    afficher(tab)
+    afficher(tab);
     return isCorrect;
 }
-
-
 
 
 void copyArray(int tab[8][8], int tabTemp[8][8]){
@@ -177,9 +172,6 @@ void copyArray(int tab[8][8], int tabTemp[8][8]){
         }
     }
 }
-
-
-
 
 
 int saisir(int tab[8][8]){
@@ -241,16 +233,18 @@ int generate(int tab[8][8], int tabTemp[8][8]){
     {
         
         for (int j = 0; j < 8; j++){
-            if((rand() % 2) == 1){
+            if((rand() % 1) == 0){ // passer à % 2 pour le vrai jeu, sinon 1, pour facile facile !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 nbToFind++;
                 tabTemp[i][j] = tab[i][j];
                 // printf("\ni=%d | j= %d", i, j);
             }
+            
         }
         
         
         
     }
+    tabTemp[7][7] = 6; // !!!!!!!!!!!!!!!!!!!!!!!! Ajouter ou suppr cette ligne si facile ou non !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     return nbToFind; //inutile pr l'instant
     
 
