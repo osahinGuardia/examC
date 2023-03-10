@@ -73,7 +73,7 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
     if(LignOrCol == 1){ // ligne
         counter -= 10; 
         for(int i=0; i<8; i++){
-            // printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
+            printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
             
             if (tab[index][i] != past || tab[index][i] != pastPast){ // test doublon
                 
@@ -106,7 +106,7 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
     }else if (LignOrCol == 0){ // colonne
         counter -= 10; 
         for(int i=0; i<8; i++){
-            // printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
+            printf("index= %d | i= %d | counter= %d | pastPast= %d | past= %d | valeur= %d\n", index, i, counter, pastPast, past, tab[index][i]);
             
 
             if (tab[i][index] != past || tab[i][index] != pastPast){ // test doublon
@@ -128,9 +128,9 @@ int verifLigneColonne(int tab[8][8], int index, int LignOrCol){
         }
         if (counter != 0){ // renvoie mauvaise equilibre
             if (counter < 0){
-                // printf("une colonne contient trop de 0.\n");
+                printf("une colonne contient trop de 0.\n");
             }else if (counter > 0){
-                // printf("une colonne contient trop de 1.\n");
+                printf("une colonne contient trop de 1.\n");
             }
             return result;
         }
@@ -162,6 +162,7 @@ int verifGrille(int tab[8][8]){
             isCorrect = 0;
         }
     }
+    afficher(tab)
     return isCorrect;
 }
 
@@ -188,29 +189,29 @@ int saisir(int tab[8][8]){
         int saisie = 0;
         
         int tabTemp[8][8] = {
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
             
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
-            {5,5,5,5, 5,5,5,5},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
+            {6,6,6,6, 6,6,6,6},
             
         };
         
         copyArray(tab, tabTemp);
         
-        printf("\nVeuillez saisir une colonne");
-        scanf("%d", &saisie);
-        int saisieI = saisie;
-        
         printf("\nVeuillez saisir une ligne");
         scanf("%d", &saisie);
-        int saisieJ = saisie;
+        int saisieI = saisie - 1;
         
-        if(tab[saisieI][saisieJ] == 5){
+        printf("\nVeuillez saisir une colonne");
+        scanf("%d", &saisie);
+        int saisieJ = saisie - 1;
+        
+        if(tab[saisieI][saisieJ] != 6){
             printf("Cette case est deja remplie Reessayez\n");
         } else {
             printf("Quelle valeur souhaitez vous inserer ?\n");
@@ -218,12 +219,12 @@ int saisir(int tab[8][8]){
             int saisieVal = saisie;
             int envie;
             tabTemp[saisieI][saisieJ] = saisieVal;
-            scanf("\nenvie de tester ? [1 = oui / 0 = non] :%d", &envie);
-            if (envie == 1)
-                result = verifGrille(tabTemp);
-                if(result){
-                    tab[saisieI][saisieJ] = saisieVal;
-                }
+            // scanf("\nenvie de tester ? [1 = oui / 0 = non] :%d", &envie);
+            // if (envie == 1)
+            result = verifGrille(tabTemp);
+            if(result){
+                tab[saisieI][saisieJ] = saisieVal;
+            }
         }
         
     }
@@ -250,7 +251,7 @@ int generate(int tab[8][8], int tabTemp[8][8]){
         
         
     }
-    return nbToFind;
+    return nbToFind; //inutile pr l'instant
     
 
 }
@@ -291,21 +292,21 @@ int main(){
     printf("\n");  
     //toucher le code entre les commentaires 
     int tabJoueur[8][8] = {
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5},
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6},
 
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5},
-        {5,5,5,5, 5,5,5,5}
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6},
+        {6,6,6,6, 6,6,6,6}
     };
 
     int isTurning = 0;
     generate(solution, tabJoueur);
     do{
-        afficher(solution);
+        // afficher(solution);
         afficher(tabJoueur);
         isTurning = saisir(tabJoueur);
     } while(isTurning);
