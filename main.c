@@ -23,10 +23,12 @@
 
 
 void afficher (int tab[8][8]){
-    int i, j, k, l;
+    int i, j, k, l, m=0, n=0;
     char letter = '1', number = '1';
     
-    
+    printf("\n"); 
+    printf("---------------------------------\n");  
+     
     for(j=0; j<8; j++)
             printf("  %c ", letter++);
         
@@ -44,7 +46,7 @@ void afficher (int tab[8][8]){
             for(l; l<1; l++)
                 printf("|\n");
             
-            printf("| %d ", tab[i][j]);
+            printf("| %d ", tab[m][n]);
             // for(int j= 0; j < 9; j++)  {
             // printf("| %d ", tab[i][j]);
             // }
@@ -57,6 +59,9 @@ void afficher (int tab[8][8]){
         printf("|---");
         
     printf("|"); 
+    
+    printf("\n---------------------------------");  
+    printf("\n"); 
 
 }
 
@@ -229,18 +234,21 @@ int saisir(int tab[8][8]){
 
 int generate(int tab[8][8], int tabTemp[8][8]){
 
-    int nbToFind = 5;
+    int nbToFind = 0;
+    srand(time(NULL));
 
     for (int i = 0; i < 8; i++)
     {
-        for (int j = 0; j < 8; j++)
-        {
+        
+        for (int j = 0; j < 8; j++){
             if((rand() % 2) == 1){
                 nbToFind++;
                 tabTemp[i][j] = tab[i][j];
-
+                // printf("\ni=%d | j= %d", i, j);
             }
         }
+        
+        
         
     }
     return nbToFind;
@@ -298,7 +306,7 @@ int main(){
     int isTurning = 0;
     generate(solution, tabJoueur);
     do{
-        
+        afficher(solution);
         afficher(tabJoueur);
         isTurning = saisir(tabJoueur);
     } while(isTurning);
