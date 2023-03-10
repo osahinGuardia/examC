@@ -35,18 +35,17 @@ void afficher (int tab[8][8]){
         
     for(i=0; i<8; i++){
         printf("\n");
+       
         
-        
-        for(j=0; j<8; j++)
+        for(j=0; j<8; j++){
             printf("|---");
-        
+        }
+            
         l = 0;
         for(k=0; k<8; k++){
-            
             for(l; l<1; l++)
                 printf("|\n");
-            
-            printf("| %d ", tab[m][n]);
+            printf("| %d ", tab[i][k]);
             // for(int j= 0; j < 9; j++)  {
             // printf("| %d ", tab[i][j]);
             // }
