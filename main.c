@@ -28,7 +28,7 @@ int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
     int result = 0;
     int counter = 10;
     int past = 2;
-    int pastPast = 2;
+    int pastPast = 3;
 
     if(LignOrCol){ // ligne
         counter -= 10; 
@@ -45,7 +45,7 @@ int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
                     past = 0;
                 }
             }else {
-                result = 2;
+                // result = 2;
                 return result;
             }
             
@@ -75,7 +75,7 @@ int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
                     past = 0;
                 }
             }else {
-                result = 2;
+                // result = 2;
                 return result;
             }
             
