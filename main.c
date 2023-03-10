@@ -19,7 +19,83 @@
     // - la fonction verifierLigneColonne ( qui verifie les lignes et les colonnes  sur lesquelles sont la nouvelle valeur)
     // - la fonction verifierGrille (qui fait ceci pour toute la grille et permet de definir la condition de victoire)
 
-// 4 - Ecrire le code principal qui permet de jouer au joueur :  le programme prend fin quand on gagne 
+// 4 - Ecrire le code principal qui permet de jouer au joueur : le programme prend fin quand on gagne 
+
+
+
+
+int verifierLigneColonne(int tab[8][8], int index, int LignOrCol){
+    int result = 0;
+    int counter = 10;
+    int past = 2;
+    int pastPast = 2;
+
+    if(LignOrCol){ // ligne
+        counter -= 10; 
+        for(int i=0; i<8; i++){
+
+            
+            if (tab[index][i] != past && tab[index][i] != pastPast){ // test doublon
+                pastPast = past;
+                if (tab[index][i] == 1){ // test equilibre
+                    counter += 1;
+                    past = 1;
+                }else{
+                    counter -= 1;
+                    past = 0;
+                }
+            }else {
+                result = 2;
+                return result;
+            }
+            
+        }
+        if (counter != 0){ // renvoie mauvaise equilibre
+            if (counter < 0){
+                printf("une colonne contient trop de 0.");
+            }else if (counter > 0){
+                printf("une colonne contient trop de 1.");
+            }
+            return result;
+        }
+        result = 1;
+
+    }else{ // colonne
+        counter -= 10; 
+        for(int i=0; i<8; i++){
+            
+
+            if (tab[i][index] != past && tab[i][index] != pastPast){ // test doublon
+                pastPast = past;
+                if (tab[i][index] == 1){ // test equilibre
+                    counter += 1;
+                    past = 1;
+                }else{
+                    counter -= 1;
+                    past = 0;
+                }
+            }else {
+                result = 2;
+                return result;
+            }
+            
+            
+        }
+        if (counter != 0){ // renvoie mauvaise equilibre
+            if (counter < 0){
+                printf("une colonne contient trop de 0.");
+            }else if (counter > 0){
+                printf("une colonne contient trop de 1.");
+            }
+            return result;
+        }
+        result = 1;
+    }
+    return result;
+}
+
+// return 2 pour doublon / return 1 pour Juste / return 0 si non-equilibre
+
 
 
 
@@ -81,16 +157,16 @@ int saisir(int tab[8][8]){
         scanf("%d", &saisie);
         int saisieJ = saisie;
         
-        if(tab[saisieX][saisieY] == 5){
+        if(tab[saisieI][saisieJ] == 5){
             printf("Cette case est deja remplie Reessayez\n");
         } else {
             printf("Quelle valeur souhaitez vous inserer ?\n");
             scanf("%d", &saisie);
             int saisieVal = saisie;
-            tabTemp[saisieX][saisieY] = saisieVal;
-            result = verifierGrille(tabeauTemporaire);
+            tabTemp[saisieI][saisieJ] = saisieVal;
+            result = verifierGrille(tabTemp);
             if(result){
-                tab[saisieX][saisieY] = saisieVal;
+                tab[saisieI][saisieJ] = saisieVal;
             }
         }
         
